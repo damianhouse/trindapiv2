@@ -4,6 +4,6 @@ FactoryGirl.define do
         description { Faker::ChuckNorris.fact }
         location { Faker::StarWars.planet }
         interests { Faker::StarWars.vehicle }
-        event_creator { rand(1..1000) }
+        user
     end
 end

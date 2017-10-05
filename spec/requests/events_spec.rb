@@ -4,7 +4,7 @@ RSpec.describe 'Events API', type: :request do
   # initialize test data 
   let!(:events) { create_list(:event, 10) }
   let(:event_id) { events.first.id }
-
+  let(:user) { create(:user) }
   # Test suite for GET /events
   describe 'GET /events' do
     # make HTTP get request before each example
@@ -52,8 +52,8 @@ RSpec.describe 'Events API', type: :request do
   # Test suite for POST /events
   describe 'POST /events' do
     # valid payload
-    let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
-
+    let(:valid_attributes) { { title: 'Learn Elm', user_id: user.id, description: "things", location: "Durham", interests: "Things" } }
+    
     context 'when the request is valid' do
       before { post '/events', params: valid_attributes }
 
@@ -75,7 +75,7 @@ RSpec.describe 'Events API', type: :request do
 
       it 'returns a validation failure message' do
         expect(response.body)
-          .to match(/Validation failed: Created by can't be blank/)
+          .to match(/Validation failed: User must exist, Description can't be blank, User can't be blank, Interests can't be blank, Location can't be blank/)
       end
     end
   end

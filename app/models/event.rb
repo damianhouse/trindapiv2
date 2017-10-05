@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-    belongs_to :event_creator, class_name: "User"
-    validates_presence_of :title, :description, :event_creator, :interests, :location
+    belongs_to :user
+    validates_presence_of :title, :description, :user_id, :interests, :location
 end
