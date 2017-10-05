@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe 'Events API', type: :request do
   # initialize test data 
   let!(:events) { create_list(:event, 10) }
+  let!(:user) { create(:user) }
   let(:event_id) { events.first.id }
-  let(:user) { create(:user) }
+  
   # Test suite for GET /events
   describe 'GET /events' do
     # make HTTP get request before each example
