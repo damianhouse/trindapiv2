@@ -35,6 +35,7 @@ end
 group :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
   gem 'database_cleaner'
   gem 'rspec-rainbow'
 end
